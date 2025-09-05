@@ -21,13 +21,17 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            # Remove old files
-            sudo rm -rf /var/www/html/*
+            # If folder exists, pull latest changes
+            if [ -d "/var/www/html/.git" ]; then
+              cd /var/www/html
+              git reset --hard
+              git pull origin main
+            else
+              # First-time deployment
+              git clone https://github.com/Sandesh-Gadal/mini_finance.git /var/www/html
+            fi
             
-            # Clone the latest version of the repo
-            git clone https://github.com/Sandesh-Gadal/mini_finance.git /var/www/html
-            
-            # Set appropriate permissions
+            # Set proper permissions
             sudo chown -R nginx:nginx /var/www/html
             sudo chmod -R 755 /var/www/html
             
