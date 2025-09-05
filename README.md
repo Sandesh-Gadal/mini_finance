@@ -241,3 +241,13 @@ Footer HTML and JS to display today's date dynamically:
   const options = { day: '2-digit', month: 'short', year: 'numeric' };
   document.getElementById('deploy-date').textContent = today.toLocaleDateString('en-US', options);
 </script>
+
+
+## Deployment Updates
+
+### Day 3 – Footer Polish & Accessibility
+- Tweaked footer font size and spacing for better readability.
+- Ensured color contrast meets AA standards.
+- Tested on both mobile (narrow viewport) and desktop.
+
+

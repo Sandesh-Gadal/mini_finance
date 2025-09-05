@@ -34,6 +34,12 @@ jobs:
               # First-time deployment
               git clone https://github.com/Sandesh-Gadal/mini_finance.git /var/www/html
             fi
+
+                    # Get latest commit hash
+            COMMIT_HASH=$(git rev-parse --short HEAD)
+            
+            # Inject hash into JS file
+            echo "document.getElementById('commit-hash').textContent = '${COMMIT_HASH}';" > /var/www/html/js/deploy-hash.js
             
             # Set proper permissions
             sudo chown -R nginx:nginx /var/www/html
