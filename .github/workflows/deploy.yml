@@ -21,6 +21,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
+           # Ensure folder exists and has correct permissions
+            sudo mkdir -p /var/www/html
+            sudo chown -R ec2-user:ec2-user /var/www/html
+
             # If folder exists, pull latest changes
             if [ -d "/var/www/html/.git" ]; then
               cd /var/www/html
