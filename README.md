@@ -227,6 +227,11 @@ This project demonstrates Git operations like clone, pull, push, and creating a 
 This project demonstrates Git operations like clone, pull, push, PR—a hands-on Mini-Finance tool.
 
 
+### Day 1 – Initial Deployment
+- Setup GitHub Actions → EC2 via Nginx.  
+- Verified first deployment live.
+- change the footer also 
+
 ### Day 2 – Dynamic Footer Date
 
 Footer HTML and JS to display today's date dynamically:
@@ -242,12 +247,39 @@ Footer HTML and JS to display today's date dynamically:
   document.getElementById('deploy-date').textContent = today.toLocaleDateString('en-US', options);
 </script>
 
-
-## Deployment Updates
+```
 
 ### Day 3 – Footer Polish & Accessibility
 - Tweaked footer font size and spacing for better readability.
 - Ensured color contrast meets AA standards.
 - Tested on both mobile (narrow viewport) and desktop.
+
+### Day 4 – Provenance / Health
+Footer now shows latest commit hash for provenance.
+
+```html
+<p id="footer-text">
+  Mini Finance v1.0 — rev: <span id="commit-hash"></span>
+</p>
+
+<script>
+  fetch('https://api.github.com/repos/Sandesh-Gadal/mini_finance/commits/main')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('commit-hash').textContent = data.sha.substring(0, 7);
+    });
+</script>
+```
+
+### Day 5 – Review & Retro
+Recorded 2–3 min demo of EC2 site.
+
+Went Well: CI/CD pipeline stable, features deployed smoothly.
+
+Improve: Need faster feedback when Nginx cache delays changes.
+
+Pillar/Value: Transparency & Commitment shown.
+
+Captured final Burndown screenshot.
 
 
