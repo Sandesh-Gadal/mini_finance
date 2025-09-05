@@ -225,3 +225,19 @@ Assignment Note
 
 This project demonstrates Git operations like clone, pull, push, and creating a Pull Request—a hands-on Mini-Finance tool.
 This project demonstrates Git operations like clone, pull, push, PR—a hands-on Mini-Finance tool.
+
+
+### Day 2 – Dynamic Footer Date
+
+Footer HTML and JS to display today's date dynamically:
+
+```html
+<footer>
+  <p id="footer-text">Mini Finance v1.0 — Deployed on <span id="deploy-date"></span> — By Sandesh</p>
+</footer>
+
+<script>
+  const today = new Date();
+  const options = { day: '2-digit', month: 'short', year: 'numeric' };
+  document.getElementById('deploy-date').textContent = today.toLocaleDateString('en-US', options);
+</script>
